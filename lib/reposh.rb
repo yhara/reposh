@@ -17,7 +17,7 @@ class Hash
 end
 
 class Reposh
-  VERSION = "0.1.7"
+  VERSION = File.read(Pathname(__FILE__).dirname + "../VERSION").chomp
   CONF_DEFAULT = { 
     "global" => {
       "editing_mode" => nil,
