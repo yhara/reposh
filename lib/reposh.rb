@@ -1,6 +1,7 @@
 require 'readline'
 require 'yaml'
 require 'optparse'
+require 'pathname'
 
 class Hash
   def recursive_merge(other)
@@ -88,17 +89,24 @@ class Reposh
   end
 
   def guess_system
-    case 
-    when File.directory?(".git")
-      "git"
-    when File.directory?(".hg")
-      "hg"
-    when File.directory?("_darcs")
-      "darcs"
-    when File.directory?(".svn")
-      "svn"
-    else
-      "svk"
+    base = Pathname(Dir.pwd)
+    loop do
+      case 
+      when (base + ".git").directory?
+        return "git"
+      when (base + ".hg").directory?
+        return "hg"
+      when (base + "_darcs").directory?
+        return "darcs"
+      when (base + ".svn").directory?
+        return "svn"
+      end
+
+      if base.root?
+        return  "svk"
+      else
+        base = base.parent
+      end
     end
   end
   
