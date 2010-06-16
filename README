@@ -1,0 +1,49 @@
+== Reposh - what's this?
+
+Without reposh, you type like this:
+  $ svk di
+  $ svk ci
+  $ svk st
+  $ ls
+but this is not DRY :)
+
+With reposh, you can omit typing all 'svk's:
+  $ reposh
+  Welcome to reposh x.y.z (mode: svk)
+  > di
+  > ci
+  >          # just push [Enter] for 'svk status'
+  > :ls      # start with ':' to run shell commands
+
+== How to use
+
+(1) write /home/(your name)/.reposh.yaml
+(2) cd to your working directory
+(3) reposh.rb [Enter]
+
+== Options
+
+see reposh.rb --help
+
+== Commands
+
+* exit, quit, ^D(^Z)
+  * Quit reposh
+* :ls ~/
+  * Run "ls ~/" by shell
+* [Enter]
+  * Equals to "status" (you can change this by .reposh.yaml) 
+* %reload
+  * Reload reposh.rb (for reposh developper)
+  * Some more commands starts with % are supported: see source
+
+All other commands are passed to vcs system.
+
+== Configuration
+
+see sample.reposh.yaml
+
+== Contact
+ 
+  http://mono.kmc.gr.jp/~yhara/w?Reposh
+

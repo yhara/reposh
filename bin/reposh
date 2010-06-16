@@ -1,0 +1,11 @@
+#!/usr/bin/env ruby
+# reposh.rb - Reposh - Simple VCS Manager Shell
+
+if File.symlink?(__FILE__)
+  $LOAD_PATH << File.join(File.dirname(File.readlink(__FILE__)), '../lib')
+else
+  $LOAD_PATH << File.join(File.dirname(__FILE__), '../lib')
+end
+
+require 'reposh'
+Reposh.new.run

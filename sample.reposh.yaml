@@ -1,0 +1,25 @@
+global:
+  editing_mode: vi             # default is: emacs
+  # pathext: [".bat", ".cmd"]  # for windows users
+  custom_commands:
+    # > ignore_of lib  =>  svn propedit svn:ignore lib
+    - pattern: \Aignore_of (.*)
+      rule: "{system} propedit svn:ignore {$1}"
+      for: svn, svk
+    # > ignore lib/*.o  =>  svn propset svn:ignore *.o lib
+    - pattern: \Aignore (.*)[\\/]([^\\/]+)
+      rule: "{system} propset svn:ignore {$2} {$1}"
+      for: svn, svk
+
+# settings for each vcs
+system:
+  default:  # for all vcs
+    prompt: "> "
+  svn:
+    binpath: svn
+  svk:
+    binpath: c:/prog/svk/bin/svk.bat    # path to svk
+    prompt: "svk > "                    # prompt
+    default_cmd: "status"               # used when you just type [Enter]
+  hg:
+    binpath: hg
