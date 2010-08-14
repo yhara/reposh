@@ -161,7 +161,7 @@ class Reposh
       }
 
       # exit commands
-      exit_task = lambda{
+      exit_task = lambda {|ignore|
         puts ""
         exit
       }
