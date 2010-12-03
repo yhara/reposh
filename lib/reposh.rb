@@ -45,6 +45,7 @@ class Reposh
     @editing_mode = @conf["global"]["editing_mode"]
     pathext       = @conf["global"]["pathext"]
     @prompt      = get_conf(@system_name, "prompt")
+    @ruby_prompt = get_conf(@system_name, "ruby_prompt")
     binpath      = get_conf(@system_name, "binpath") || @system_name
     default_cmd  = get_conf(@system_name, "default_cmd")
 
@@ -121,7 +122,8 @@ class Reposh
 
     puts "Welcome to reposh #{VERSION} (mode: #{@system_name})"
     loop do
-      cmd = Readline.readline(@prompt, true)
+      prompt = if @ruby_prompt then eval(@ruby_prompt) else @prompt end
+      cmd = Readline.readline(prompt, true)
       @commands.dispatch(cmd, @system_name)
     end
   end
