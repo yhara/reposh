@@ -1,49 +1,67 @@
-== Reposh - what's this?
+Reposh
+======
 
-Without reposh, you type like this:
-  $ svk di
-  $ svk ci
-  $ svk st
-  $ ls
-but this is not DRY :)
+Reposh is a shell for VCS like svn, git, etc.
 
-With reposh, you can omit typing all 'svk's:
-  $ reposh
-  Welcome to reposh x.y.z (mode: svk)
-  > di
-  > ci
-  >          # just push [Enter] for 'svk status'
-  > :ls      # start with ':' to run shell commands
+Without reposh:
 
-== How to use
+    $ git di
+    $ git ci
+    $ git st
+    $ ls
 
+With reposh:
+
+    $ reposh
+    Welcome to reposh x.y.z (mode: git)
+    > di
+    > ci
+    >          # just push [Enter] for 'git status'
+    > :ls      # start with ':' to run shell commands
+
+You can also define custom command in your ~/.reposh.yaml.
+
+Install
+-------
+
+(0) gem install reposh
 (1) write /home/(your name)/.reposh.yaml
 (2) cd to your working directory
 (3) reposh.rb [Enter]
 
-== Options
+Options
+-------
 
-see reposh.rb --help
+see reposh --help
 
-== Commands
+Special commands
+----------------
 
 * exit, quit, ^D(^Z)
   * Quit reposh
-* :ls ~/
-  * Run "ls ~/" by shell
+* :ls
+  * Run "ls" by current shell
 * [Enter]
   * Equals to "status" (you can change this by .reposh.yaml) 
-* %reload
-  * Reload reposh.rb (for reposh developper)
-  * Some more commands starts with % are supported: see source
+* %ruby ...
+  * eval string as Ruby program (like ruby -e)
 
-All other commands are passed to vcs system.
+Supported VCSs
+--------------
 
-== Configuration
+* Git (directory .git)
+* Mercurial (directory .hg)
+* Darcs (directory _darcs)
+* Subversion (directory .svn)
+* SVK (none of above)
 
-see sample.reposh.yaml
+Configuration
+-------------
 
-== Contact
+See sample.reposh.yaml
+
+Contact
+=======
  
-  http://mono.kmc.gr.jp/~yhara/w?Reposh
+http://twitter.com/yhara_en
 
